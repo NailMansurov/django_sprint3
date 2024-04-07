@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from .managers import PostManager
+from .constants import TITLE_MAX_LENGTH
 
 User = get_user_model()
 
@@ -25,7 +26,10 @@ class PublishedModel(models.Model):
 class Category(PublishedModel):
     """Тематическая категория."""
 
-    title = models.CharField(max_length=256, verbose_name='Заголовок')
+    title = models.CharField(
+        max_length=TITLE_MAX_LENGTH,
+        verbose_name='Заголовок'
+    )
     description = models.TextField(default='', verbose_name='Описание')
     slug = models.SlugField(
         unique=True,
@@ -47,7 +51,10 @@ class Category(PublishedModel):
 class Location(PublishedModel):
     """Географическая метка."""
 
-    name = models.CharField(max_length=256, verbose_name='Название места')
+    name = models.CharField(
+        max_length=TITLE_MAX_LENGTH,
+        verbose_name='Название места'
+    )
 
     class Meta:
         verbose_name = 'местоположение'
@@ -60,7 +67,10 @@ class Location(PublishedModel):
 class Post(PublishedModel):
     """Публикация."""
 
-    title = models.CharField(max_length=256, verbose_name='Заголовок')
+    title = models.CharField(
+        max_length=TITLE_MAX_LENGTH,
+        verbose_name='Заголовок'
+    )
     text = models.TextField(verbose_name='Текст')
     pub_date = models.DateTimeField(
         verbose_name='Дата и время публикации',
