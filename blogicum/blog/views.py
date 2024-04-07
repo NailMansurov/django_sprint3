@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest
-from django.utils.timezone import now
 from .constants import POSTS_ON_PAGE
 from .models import Post, Category
 
